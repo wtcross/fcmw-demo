@@ -1,0 +1,38 @@
+---
+# tasks file for apache
+
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_os_family | lower }}.yml"
+
+- include: "{{ ansible_os_family | lower }}.yml"
+
+- name: create sites directories
+  file: 
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ apache_dirs }}"
+
+- name: create docroot 
+  file: 
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ apache_docroot }}"
+
+- name: copy index.html
+  template: 
+    src: index.html.j2 
+    dest: "{{ apache_docroot }}/index.html"
+
+- name: copy httpd.conf
+  template: 
+    src: httpd.conf-{{ ansible_os_family | lower }}.j2 
+    dest: "{{ apache_config }}"
+  notify: restart apache
+
+- name: start and enable apache service
+  service: 
+    name: "{{ apache_service }}"
+    state: started 
+    enabled: yes
+  tags: service
+
