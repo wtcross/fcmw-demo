@@ -62,7 +62,7 @@
         instance_tags:
           Name: app-deploy-demo
           Group: webserver
-        user_data: "{{ lookup('template', './files/userdata.txt.j2') }}"
+        user_data: "{{ lookup('template', 'files/userdata.txt.j2') }}"
       register: ec2_result
 
     - name: wait for WinRM to answer on all hosts
