@@ -32,4 +32,4 @@
       retries: 3
 
     - debug:
-        msg: web application is available at http://{{ ansible_ssh_host}}/f
+        msg: web application is available at http://{{ ansible_ssh_host}}/foo
