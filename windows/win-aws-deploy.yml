@@ -13,7 +13,7 @@
 
     - name: ensure default.aspx is present
       win_copy:
-        src: default.aspx
+        src: files/default.aspx
         dest: c:\inetpub\foo\default.aspx
 
     - name: ensure that the foo web application exists
