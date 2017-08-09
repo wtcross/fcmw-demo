@@ -9,7 +9,7 @@
         platform: windows
         virtualization_type: hvm
         owner: amazon
-        name: Windows_Server-2012-R2_RTM-English-64Bit-Base-*
+        name: Windows_Server-2016-English-Core-Base-*
         no_result_action: fail
         sort: name
         sort_order: descending
